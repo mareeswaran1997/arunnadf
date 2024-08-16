@@ -1,0 +1,19 @@
+{
+	"name": "archice_df",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"folderPath": "archive",
+				"fileSystem": "adfproject"
+			}
+		},
+		"schema": {}
+	}
+}
