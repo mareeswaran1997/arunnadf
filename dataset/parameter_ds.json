@@ -25,7 +25,10 @@
 					"value": "@toLower(dataset().ds_file_name)",
 					"type": "Expression"
 				},
-				"folderPath": "output/test",
+				"folderPath": {
+					"value": "@concat(dataset().ds_file_directory,'/ptest')",
+					"type": "Expression"
+				},
 				"fileSystem": {
 					"value": "@dataset().ds_file_system",
 					"type": "Expression"
