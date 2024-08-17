@@ -16,14 +16,14 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Source_df",
+						"referenceName": "metadata_ds",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
 						"itemName",
 						"itemType",
-						"lastModified",
-						"exists"
+						"exists",
+						"lastModified"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
