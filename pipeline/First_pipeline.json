@@ -49,7 +49,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "Source_df",
+						"referenceName": "parameter_ds",
 						"type": "DatasetReference"
 					}
 				],
@@ -181,6 +181,23 @@
 				}
 			}
 		],
+		"parameters": {
+			"pp_file_system": {
+				"type": "string"
+			},
+			"pp_file_intput": {
+				"type": "string"
+			},
+			"pp_file_output": {
+				"type": "string"
+			},
+			"pp_file_archive": {
+				"type": "string"
+			},
+			"pp_file_name": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Activity"
 		},
