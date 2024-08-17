@@ -108,6 +108,9 @@
 			},
 			"pp_file_name": {
 				"type": "string"
+			},
+			"pp_flle_archive": {
+				"type": "string"
 			}
 		},
 		"folder": {
