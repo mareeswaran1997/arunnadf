@@ -36,6 +36,23 @@
 				]
 			}
 		],
+		"parameters": {
+			"pp_file_system": {
+				"type": "string"
+			},
+			"pp_file_input_dir": {
+				"type": "string"
+			},
+			"pp_file_output_dir": {
+				"type": "string"
+			},
+			"pp_file_archive_dir": {
+				"type": "string"
+			},
+			"pp_file_name": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "Activity"
 		},
