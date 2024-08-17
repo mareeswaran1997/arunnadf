@@ -50,13 +50,41 @@
 				"inputs": [
 					{
 						"referenceName": "parameter_ds",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_file_system": {
+								"value": "@pipeline().parameters.pp_file_system",
+								"type": "Expression"
+							},
+							"ds_file_directory": {
+								"value": "@pipeline().parameters.pp_file_intput",
+								"type": "Expression"
+							},
+							"ds_file_name": {
+								"value": "@pipeline().parameters.pp_file_name",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "link_df",
-						"type": "DatasetReference"
+						"referenceName": "parameter_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_file_system": {
+								"value": "@pipeline().parameters.pp_file_system",
+								"type": "Expression"
+							},
+							"ds_file_directory": {
+								"value": "@pipeline().parameters.pp_file_output",
+								"type": "Expression"
+							},
+							"ds_file_name": {
+								"value": "@pipeline().parameters.pp_file_name",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -92,26 +120,64 @@
 						}
 					},
 					"sink": {
-						"type": "JsonSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
-							"type": "JsonWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
 					{
-						"referenceName": "link_df",
-						"type": "DatasetReference"
+						"referenceName": "parameter_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_file_system": {
+								"value": "@pipeline().parameters.pp_file_system",
+								"type": "Expression"
+							},
+							"ds_file_directory": {
+								"value": "@pipeline().parameters.pp_file_output",
+								"type": "Expression"
+							},
+							"ds_file_name": {
+								"value": "@pipeline().parameters.pp_file_name",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "archice_df",
-						"type": "DatasetReference"
+						"referenceName": "parameter_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_file_system": {
+								"value": "@pipeline().parameters.pp_file_system",
+								"type": "Expression"
+							},
+							"ds_file_directory": {
+								"value": "@pipeline().parameters.pp_file_archive",
+								"type": "Expression"
+							},
+							"ds_file_name": {
+								"value": "@pipeline().parameters.pp_file_name",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -169,8 +235,22 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "Source_df",
-						"type": "DatasetReference"
+						"referenceName": "parameter_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_file_system": {
+								"value": "@pipeline().parameters.pp_file_system",
+								"type": "Expression"
+							},
+							"ds_file_directory": {
+								"value": "@pipeline().parameters.pp_file_intput",
+								"type": "Expression"
+							},
+							"ds_file_name": {
+								"value": "@pipeline().parameters.pp_file_name",
+								"type": "Expression"
+							}
+						}
 					},
 					"enableLogging": false,
 					"storeSettings": {
