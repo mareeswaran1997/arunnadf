@@ -26,7 +26,7 @@
 					"type": "Expression"
 				},
 				"folderPath": {
-					"value": "@concat(dataset().ds_file_directory,'/','text')",
+					"value": "@dataset().ds_file_directory",
 					"type": "Expression"
 				},
 				"fileSystem": {
