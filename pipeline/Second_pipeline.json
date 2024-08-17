@@ -77,19 +77,24 @@
 		],
 		"parameters": {
 			"pp_file_system": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "adfproject"
 			},
 			"pp_file_input_dir": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "input"
 			},
 			"pp_file_output_dir": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "output"
 			},
 			"pp_file_archive_dir": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "archive"
 			},
 			"pp_file_name": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "SalesLTProduct.txt"
 			}
 		},
 		"folder": {
