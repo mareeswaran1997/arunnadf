@@ -98,19 +98,23 @@
 		],
 		"parameters": {
 			"pp_file_system": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "adfproject"
 			},
 			"pp_file_input": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "input"
 			},
 			"pp_file_output": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "output"
 			},
 			"pp_file_name": {
 				"type": "string"
 			},
 			"pp_flle_archive": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "archive"
 			}
 		},
 		"folder": {
