@@ -1,5 +1,5 @@
 {
-	"name": "movement of data",
+	"name": "arun_pipe1",
 	"properties": {
 		"activities": [
 			{
@@ -91,24 +91,19 @@
 		],
 		"parameters": {
 			"arun_pipe_sys": {
-				"type": "string",
-				"defaultValue": "adfproject"
+				"type": "string"
 			},
 			"arun_pipe_input": {
-				"type": "string",
-				"defaultValue": "input"
+				"type": "string"
 			},
 			"arun_pipe_output": {
-				"type": "string",
-				"defaultValue": "output"
+				"type": "string"
 			},
 			"arun_pipe_archive": {
-				"type": "string",
-				"defaultValue": "archive"
+				"type": "string"
 			},
 			"arun_pipe_filename": {
-				"type": "string",
-				"defaultValue": "SalesLTProduct.txt"
+				"type": "string"
 			}
 		},
 		"folder": {
