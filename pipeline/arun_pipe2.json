@@ -80,7 +80,29 @@
 									"referenceName": "arun_pipe1",
 									"type": "PipelineReference"
 								},
-								"waitOnCompletion": true
+								"waitOnCompletion": true,
+								"parameters": {
+									"arun_pipe_sys": {
+										"value": "@pipeline().parameters.pipe2_sys",
+										"type": "Expression"
+									},
+									"arun_pipe_input": {
+										"value": "@pipeline().parameters.pipe2_input",
+										"type": "Expression"
+									},
+									"arun_pipe_output": {
+										"value": "@pipeline().parameters.pipe2_output",
+										"type": "Expression"
+									},
+									"arun_pipe_archive": {
+										"value": "@pipeline().parameters.pipe2_archive",
+										"type": "Expression"
+									},
+									"arun_pipe_filename": {
+										"value": "@item().name",
+										"type": "Expression"
+									}
+								}
 							}
 						}
 					]
