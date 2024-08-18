@@ -34,11 +34,7 @@
 						}
 					},
 					"fieldList": [
-						"itemName",
-						"itemType",
-						"exists",
-						"childItems",
-						"lastModified"
+						"childItems"
 					],
 					"storeSettings": {
 						"type": "AzureBlobFSReadSettings",
@@ -74,14 +70,41 @@
 							"userProperties": [],
 							"typeProperties": {
 								"expression": {
-									"value": "@contains(item().name,pipeline().parameters.pipe2_filename)",
+									"value": "@contains(item().name,pipeline().parameters.pipe2_chk)",
 									"type": "Expression"
 								},
+								"ifFalseActivities": [
+									{
+										"name": "Wait2 fa",
+										"type": "Wait",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"waitTimeInSeconds": 1
+										}
+									}
+								],
 								"ifTrueActivities": [
+									{
+										"name": "Wait1 tr",
+										"type": "Wait",
+										"dependsOn": [],
+										"userProperties": [],
+										"typeProperties": {
+											"waitTimeInSeconds": 1
+										}
+									},
 									{
 										"name": "Execute Pipeline1",
 										"type": "ExecutePipeline",
-										"dependsOn": [],
+										"dependsOn": [
+											{
+												"activity": "Wait1 tr",
+												"dependencyConditions": [
+													"Succeeded"
+												]
+											}
+										],
 										"policy": {
 											"secureInput": false
 										},
@@ -110,7 +133,7 @@
 													"type": "Expression"
 												},
 												"arun_pipe_filename": {
-													"value": "@activity('Get Metadata1').output.childItems",
+													"value": "@item().name",
 													"type": "Expression"
 												}
 											}
@@ -142,6 +165,10 @@
 			"pipe2_archive": {
 				"type": "string",
 				"defaultValue": "archive"
+			},
+			"pipe2_chk": {
+				"type": "string",
+				"defaultValue": "SalesLTProduct.txt"
 			}
 		},
 		"folder": {
