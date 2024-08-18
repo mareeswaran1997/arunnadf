@@ -1,0 +1,119 @@
+{
+	"name": "movement of data",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "Arun_parameter",
+						"type": "DatasetReference",
+						"parameters": {
+							"arun_sys": {
+								"value": "@pipeline().parameters.arun_pipe_sys",
+								"type": "Expression"
+							},
+							"arun_dir": {
+								"value": "@pipeline().parameters.arun_pipe_input",
+								"type": "Expression"
+							},
+							"arun_filename": {
+								"value": "@pipeline().parameters.arun_pipe_filename",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Arun_parameter",
+						"type": "DatasetReference",
+						"parameters": {
+							"arun_sys": {
+								"value": "@pipeline().parameters.arun_pipe_sys",
+								"type": "Expression"
+							},
+							"arun_dir": {
+								"value": "@pipeline().parameters.arun_pipe_output",
+								"type": "Expression"
+							},
+							"arun_filename": {
+								"value": "@pipeline().parameters.arun_pipe_filename",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"arun_pipe_sys": {
+				"type": "string",
+				"defaultValue": "adfproject"
+			},
+			"arun_pipe_input": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"arun_pipe_output": {
+				"type": "string",
+				"defaultValue": "output"
+			},
+			"arun_pipe_archive": {
+				"type": "string",
+				"defaultValue": "archive"
+			},
+			"arun_pipe_filename": {
+				"type": "string",
+				"defaultValue": "SalesLTProduct.txt"
+			}
+		},
+		"folder": {
+			"name": "self"
+		},
+		"annotations": []
+	}
+}
