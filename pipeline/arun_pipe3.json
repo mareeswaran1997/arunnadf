@@ -1,0 +1,152 @@
+{
+	"name": "arun_pipe3",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "Arun_parameter",
+						"type": "DatasetReference",
+						"parameters": {
+							"arun_sys": {
+								"value": "@pipeline().parameters.pipe2_sys",
+								"type": "Expression"
+							},
+							"arun_dir": {
+								"value": "@pipeline().parameters.pipe2_input",
+								"type": "Expression"
+							},
+							"arun_filename": {
+								"value": "@pipeline().parameters.pipe2_filename",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"itemName",
+						"itemType",
+						"exists",
+						"childItems",
+						"lastModified"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Get Metadata1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Get Metadata1').output.childItems",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "If Condition1",
+							"type": "IfCondition",
+							"dependsOn": [],
+							"userProperties": [],
+							"typeProperties": {
+								"expression": {
+									"value": "@contains(item().name,pipeline().parameters.pipe2_filename)",
+									"type": "Expression"
+								},
+								"ifTrueActivities": [
+									{
+										"name": "Execute Pipeline1",
+										"type": "ExecutePipeline",
+										"dependsOn": [],
+										"policy": {
+											"secureInput": false
+										},
+										"userProperties": [],
+										"typeProperties": {
+											"pipeline": {
+												"referenceName": "arun_pipe1",
+												"type": "PipelineReference"
+											},
+											"waitOnCompletion": true,
+											"parameters": {
+												"arun_pipe_sys": {
+													"value": "@pipeline().parameters.pipe2_sys",
+													"type": "Expression"
+												},
+												"arun_pipe_input": {
+													"value": "@pipeline().parameters.pipe2_input",
+													"type": "Expression"
+												},
+												"arun_pipe_output": {
+													"value": "@pipeline().parameters.pipe2_output",
+													"type": "Expression"
+												},
+												"arun_pipe_archive": {
+													"value": "@pipeline().parameters.pipe2_archive",
+													"type": "Expression"
+												},
+												"arun_pipe_filename": {
+													"value": "@activity('Get Metadata1').output.childItems",
+													"type": "Expression"
+												}
+											}
+										}
+									}
+								]
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"pipe2_sys": {
+				"type": "string",
+				"defaultValue": "adfproject"
+			},
+			"pipe2_input": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"pipe2_output": {
+				"type": "string",
+				"defaultValue": "output"
+			},
+			"pipe2_filename": {
+				"type": "string"
+			},
+			"pipe2_archive": {
+				"type": "string",
+				"defaultValue": "archive"
+			}
+		},
+		"folder": {
+			"name": "self"
+		},
+		"annotations": []
+	}
+}
