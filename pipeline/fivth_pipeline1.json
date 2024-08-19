@@ -1,0 +1,79 @@
+{
+	"name": "fivth_pipeline1",
+	"properties": {
+		"activities": [
+			{
+				"name": "Get Metadata1",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "parameter_ds",
+						"type": "DatasetReference",
+						"parameters": {
+							"ds_file_system": {
+								"value": "@pipeline().parameters.pp5_sys",
+								"type": "Expression"
+							},
+							"ds_file_directory": {
+								"value": "@pipeline().parameters.pp5_input",
+								"type": "Expression"
+							},
+							"ds_file_name": {
+								"value": "@pipeline().parameters.pp5_filename",
+								"type": "Expression"
+							}
+						}
+					},
+					"fieldList": [
+						"itemName",
+						"itemType",
+						"lastModified",
+						"exists",
+						"childItems"
+					],
+					"storeSettings": {
+						"type": "AzureBlobFSReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"pp5_sys": {
+				"type": "string",
+				"defaultValue": "adfproject"
+			},
+			"pp5_input": {
+				"type": "string",
+				"defaultValue": "input"
+			},
+			"pp5_output": {
+				"type": "string",
+				"defaultValue": "output"
+			},
+			"pp5_archive": {
+				"type": "string",
+				"defaultValue": "archive"
+			},
+			"pp5_filename": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "Activity"
+		},
+		"annotations": []
+	}
+}
