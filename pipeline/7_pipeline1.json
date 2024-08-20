@@ -40,17 +40,39 @@
 				"inputs": [
 					{
 						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"pp_file": {
+								"value": "@pipeline().parameters.pp7_input_tab",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "AzureSqlTable1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"pp_file": {
+								"value": "@pipeline().parameters.pp7_output_tab",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
 		],
+		"parameters": {
+			"pp7_input_tab": {
+				"type": "string",
+				"defaultValue": "SalesLT.Product"
+			},
+			"pp7_output_tab": {
+				"type": "string",
+				"defaultValue": "SalesLT.Product2"
+			}
+		},
 		"folder": {
 			"name": "Activity"
 		},
