@@ -66,11 +66,11 @@
 		"parameters": {
 			"pp7_input_tab": {
 				"type": "string",
-				"defaultValue": "SalesLT.Product"
+				"defaultValue": "Product"
 			},
 			"pp7_output_tab": {
 				"type": "string",
-				"defaultValue": "SalesLT.Product2"
+				"defaultValue": "Product2"
 			}
 		},
 		"folder": {
