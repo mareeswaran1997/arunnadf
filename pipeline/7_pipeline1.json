@@ -1,5 +1,5 @@
 {
-	"name": "6_pipeline1",
+	"name": "7_pipeline1",
 	"properties": {
 		"activities": [
 			{
@@ -17,20 +17,15 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select productid,name,color from [SalesLT].[Product]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "DelimitedTextSink",
-						"storeSettings": {
-							"type": "AzureBlobFSWriteSettings"
-						},
-						"formatSettings": {
-							"type": "DelimitedTextWriteSettings",
-							"quoteAllText": true,
-							"fileExtension": ".txt"
-						}
+						"type": "AzureSqlSink",
+						"writeBehavior": "insert",
+						"sqlWriterUseTableLock": false,
+						"tableOption": "autoCreate",
+						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
 					"translator": {
@@ -50,7 +45,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "link_df",
+						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
 					}
 				]
