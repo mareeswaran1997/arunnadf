@@ -17,7 +17,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT productid,name,color,size FROM [SalesLT].[Product] where color='Red'",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT productid,name,color,size FROM [SalesLT].[Product] where color=''',pipeline().parameters.pp_color,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -52,6 +55,12 @@
 				]
 			}
 		],
+		"parameters": {
+			"pp_color": {
+				"type": "String",
+				"defaultValue": "Red"
+			}
+		},
 		"folder": {
 			"name": "Activity"
 		},
