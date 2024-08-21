@@ -17,12 +17,13 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "SELECT productid,name,color,size FROM [SalesLT].[Product]",
+						"sqlReaderQuery": "SELECT productid,name,color,size FROM [SalesLT].[Product] where color='Red'",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzureSqlSink",
+						"preCopyScript": "TRUNCATE TABLE [SalesLT].[product_aug_21]; ",
 						"writeBehavior": "insert",
 						"sqlWriterUseTableLock": false,
 						"tableOption": "autoCreate",
