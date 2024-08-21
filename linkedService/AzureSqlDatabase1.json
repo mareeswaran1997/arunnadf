@@ -5,13 +5,13 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"server": "sqldbserver1908.database.windows.net",
-			"database": "db1992",
+			"server": "mareesserver.database.windows.net",
+			"database": "mareesdb",
 			"encrypt": "mandatory",
 			"trustServerCertificate": false,
 			"authenticationType": "SQL",
-			"userName": "arun",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDYwN0QxMDA2LTQ2RjEtNEVBOS04RkUxLTE5OTE3NjQxRkJCOF83NGZkZGFjOS0xZGM2LTRjMzgtYjM0YS0wMTc4ZGUwZTVjZWIiDQp9"
+			"userName": "marees",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDJERjlFQTc4LTlGNEQtNEUzRC1COTI3LThGOTI0MkMyNjVFMF9lNTAzZGNiZi1kZTI5LTRjODQtYjYyZS03ZTM0YjNhNmFlZDkiDQp9"
 		}
 	}
 }
