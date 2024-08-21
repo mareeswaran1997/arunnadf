@@ -17,17 +17,27 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": "select productid,color,size from [SalesLT].[Product] where Color = 'Red'",
+						"sqlReaderQuery": {
+							"value": "@concat('SELECT business , file_name , target_fs , target_dir,target_file_name from [dbo].[config_table] where business=''',pipeline().parameters.pp_business,'''')",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
 						"referenceName": "AzureSqlTable1",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
+		"parameters": {
+			"pp_business": {
+				"type": "String",
+				"defaultValue": "sales"
+			}
+		},
 		"folder": {
 			"name": "Activity"
 		},
