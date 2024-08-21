@@ -18,7 +18,7 @@
 					"source": {
 						"type": "AzureSqlSource",
 						"sqlReaderQuery": {
-							"value": "@concat('SELECT productid,name,color,size FROM ,pipeline().parameters.Table_name, where color=''',pipeline().parameters.pp_color,'''')",
+							"value": "@concat('SELECT productid,name,color,size FROM ',pipeline().parameters.Table_name, 'where color=''',pipeline().parameters.pp_color,'''')",
 							"type": "Expression"
 						},
 						"queryTimeout": "02:00:00",
