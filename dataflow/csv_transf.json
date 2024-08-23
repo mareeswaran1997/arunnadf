@@ -26,9 +26,6 @@
 					"name": "select1"
 				},
 				{
-					"name": "filter1"
-				},
-				{
 					"name": "derivedColumn1"
 				}
 			],
@@ -64,9 +61,8 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"derivedColumn1 filter(Black_Color=='Black') ~> filter1",
 				"select1 derive(Black_Color = Color=='Black') ~> derivedColumn1",
-				"filter1 sink(allowSchemaDrift: true,",
+				"derivedColumn1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     umask: 0022,",
 				"     preCommands: [],",
