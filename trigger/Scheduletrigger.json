@@ -1,0 +1,31 @@
+{
+	"name": "Scheduletrigger",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "First_pipeline",
+					"type": "PipelineReference"
+				},
+				"parameters": {
+					"pp_file_system": "adfproject",
+					"pp_file_intput": "input",
+					"pp_file_output": "output",
+					"pp_file_archive": "archive",
+					"pp_file_name": "SalesLTProduct.txt"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2024-08-23T22:05:00",
+				"timeZone": "India Standard Time"
+			}
+		}
+	}
+}
