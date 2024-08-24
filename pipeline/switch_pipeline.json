@@ -1,0 +1,53 @@
+{
+	"name": "switch_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Switch1",
+				"type": "Switch",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"on": {
+						"value": "@substring(file_name,0,4)",
+						"type": "Expression"
+					},
+					"cases": [
+						{
+							"value": "Sales",
+							"activities": [
+								{
+									"name": "Sales_Wait",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
+						},
+						{
+							"value": "Maruti",
+							"activities": [
+								{
+									"name": "Maruti_wait",
+									"type": "Wait",
+									"dependsOn": [],
+									"userProperties": [],
+									"typeProperties": {
+										"waitTimeInSeconds": 1
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"folder": {
+			"name": "Activity"
+		},
+		"annotations": []
+	}
+}
