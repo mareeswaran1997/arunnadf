@@ -9,7 +9,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"on": {
-						"value": "@concat('Sales')",
+						"value": "@concat('Maruti')",
 						"type": "Expression"
 					},
 					"cases": [
