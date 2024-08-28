@@ -15,7 +15,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/mareeswaran.ravindran@outlook.com/Notebook_01",
+					"notebookPath": "/Users/mareeswaran.ravindran@outlook.com/Notebook2",
 					"baseParameters": {
 						"Number": "10",
 						"tablename": "sales_lt_product"
