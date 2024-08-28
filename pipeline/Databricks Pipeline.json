@@ -17,7 +17,7 @@
 				"typeProperties": {
 					"notebookPath": "/Users/mareeswaran.ravindran@outlook.com/Notebook_01",
 					"baseParameters": {
-						"Number": "15",
+						"Number": "10",
 						"tablename": "sales_lt_product"
 					}
 				},
