@@ -17,8 +17,14 @@
 				"typeProperties": {
 					"notebookPath": "/Users/mareeswaran.ravindran@outlook.com/Notebook2",
 					"baseParameters": {
-						"Number": "10",
-						"tablename": "sales_lt_product"
+						"Number": {
+							"value": "@pipeline().parameters.Number",
+							"type": "Expression"
+						},
+						"tablename": {
+							"value": "@pipeline().parameters.tablename",
+							"type": "Expression"
+						}
 					}
 				},
 				"linkedServiceName": {
@@ -27,6 +33,14 @@
 				}
 			}
 		],
+		"parameters": {
+			"Number": {
+				"type": "String"
+			},
+			"tablename": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "Activity"
 		},
